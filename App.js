@@ -93,7 +93,7 @@ export default function App() {
         fromCurrency={fromCurrency}
         setConversionCurrencies={setConversionCurrencies}
       />
-      <ConversionTypeButton 
+      <ConversionTypeButton
         to="vnd"
         from="usd"
         toCurrency={toCurrency}
@@ -103,7 +103,7 @@ export default function App() {
       <Text>
         Current currency:
       </Text>
-      <FormattedCurrency 
+      <FormattedCurrency
         type={fromCurrency}
         value={currentCurrencyValue}
       />

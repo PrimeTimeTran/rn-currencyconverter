@@ -207,6 +207,19 @@ We should now see the `TextInput` focus immediately. The keyboard should also re
 ![name](./assets/1k.png)
 If your screen looks like this then good work. We indicated to the user what we want. We've also made some sensible decisions in terms of user experience. The `TextInput` component is auto focused, the keyboard is of type `Number`, the placeholder is a value which shows an appropriate input.
 
+All of this is the result of the props we passedto `TextInput`.
+
+```jsx
+<TextInput
+  autoFocus
+  textAlign="center"
+  selectionColor="red"
+  keyboardType="number-pad"
+  placeholder="100,000,000 VND"
+  // more to come!
+/>
+```
+
 ---
 > Key Points 🔑📝
 
