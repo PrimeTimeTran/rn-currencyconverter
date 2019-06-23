@@ -515,7 +515,7 @@ const convertCurrency = () => {
 }
 ```
 
-2. Use the `useEffect` hook provided by React in `App`'s body as well. Pass it the function we want to run on state change, the one we just defined, `convertCurrency`.
+2. Use the `useEffect` hook provided by React in `App`'s body as well. Pass it the function we want to run in the event of a state change, the one we just defined, `convertCurrency`.
 
 ```jsx
 useEffect(convertCurrency)
@@ -535,8 +535,8 @@ We should now see that the current and conversion values change.
 
 ---
 
-### **Milestone 4 🛣🏃 Implement final touches**
-Our app works alright... But I think we could add some polishing touches.
+### **Milestone 4 🛣🏃 Implement final requirements**
+Lets get the currency formatted, button highlighted if it's the current conversion type, and flags showing
 
 **A)** Add two new pieces of state, `toCurrency` & `fromCurrency`. These values will represent which currencies the user wants to exchange `from` & `to` respectively.
 
@@ -566,11 +566,11 @@ const setConversionCurrencies = (from, to) => {
 
 **D)** Refactor our `ConversionTypeButton` component. Implement it to look at the `fromCurrency` and `toCurrency` props passed to it and to behave accordingly.
 
-1. Style button based on comparsions of it's `to` & `from` props to it's `fromCurrency` and `toCurrency` props. This will result in th button having a blue background is that conversion it the current state of the application.
+1. Style button based on comparsions of it's `to` & `from` props to it's `fromCurrency` and `toCurrency` props. This will result in the button having a blue background if it's conversion type is that of the current state.
 
 2. Pass the style, `buttonStyle`, as the second element in an array passed to the `style` prop of `TouchableOpacity`.
 
-3. Forward the `setConversionCurrencies` prop we sent to `ConversionTypeButton` as a prop to it's `onPress`. This will allow to use to change which conversion they want to make.
+3. Forward the `setConversionCurrencies` prop we sent to `ConversionTypeButton` as a prop to it's `onPress`. This will allow to use to change which conversion they want to make. We also need to pass this function call two arguments, `from` & `to`.
 
 ```jsx
 const ConversionTypeButton = (props) => {
@@ -652,7 +652,7 @@ const ConversionTypeButton = ({
 
 </details>
 
-**E)** Refactor our `convertCurrency` function to behave according to the current state of the applications `fromCurrency` value. If the `fromCurrency` is vnd we divide by 23,000, if not, we multiply by 23,000. Computer Science!
+**E)** Refactor our `convertCurrency` function to behave according to the current state of the applications `fromCurrency` value. If the `fromCurrency` is VND we divide by 23,000, else, we multiply by 23,000. Computer Science!
 
 Afterwards, we call the function we got for free `setConvertedValue` with the argument of thee new converted currenciees value.
 
@@ -671,6 +671,51 @@ const convertCurrency = () => {
 ![name](./assets/4e.gif)
 The app should behave like this now.
 
+**F)** Create a new component. Contemplate the data this component needs and how it should both get & consume it.
+
+```jsx
+const FormattedCurrency = (props) => {
+  const format = props.type === 'usd' ? 'us' : 'vn'
+  const currency = props.type === 'usd' ? 'USD' : 'VND'
+  const flag = props.type === 'usd' ? '🇺🇸' : '🇻🇳' 
+
+  const formatter = new Intl.NumberFormat(format, {
+    currency,
+    style: 'currency',
+  });
+
+  return (
+    <Text style={styles.currencyText}>
+      {formatter.format(props.value)} {flag}
+    </Text>
+  )
+}
+```
+
+**G)** Add this component to the body of `App`'s return.
+
+Afterwards, we need to use this component in our body and pass it the values:
+
+```jsx
+<Text>
+  Current currency:
+</Text>
+<FormattedCurrency 
+  type={fromCurrency}
+  value={currentCurrencyValue}
+/>
+<Text>
+  Conversion currenecy:
+</Text>
+<FormattedCurrency 
+  type={toCurrency}
+  value={convertedCurrencyValue}
+/>
+```
+
+![pwd](./assets/intro.gif)
+
+Everything should be working now. Excellent!
 
 ---
 
@@ -679,7 +724,6 @@ The app should behave like this now.
 - Adding state to our application adds dynamic behavior. We can change the state of the application by using state. In this case we changed the state of which currency the user wants to convert `from` & `to`.
 
 - Our components can be composed of many smaller functions which help us to branch behavior. Consider the `convertCurrency` & `setConversionCurrencies` functions we defined within the body of the `App` component.
-
 
 ---
 
@@ -705,65 +749,12 @@ The app should behave like this now.
   - USD to VND
 - [X] User can see a prompt showing the current value they've entered
 - [X] User can see a prompt showing the current value's converted value
-- [ ] User can see both values formatted correctly for their regionale
+- [X] User can see both values formatted correctly for their regionale
 - [X] User can switch from VND to USD or USD to VND
 
-### Rocket 🚀
+### Rockets 🚀
 
-- [ ] User can see both values formatted correctly for their regionale. The flag should also be shown.
-
-Create a new component to complete this rocket. Contemplate the data this component needs and how it should get it.
-
-<details>
-
-<summary>Hint 1</summary>
-<br>
-
-Here's the component:
-
-```jsx
-const FormattedCurrency = (props) => {
-  const format = props.type === 'usd' ? 'us' : 'vn'
-  const currency = props.type === 'usd' ? 'USD' : 'VND'
-  const flag = props.type === 'usd' ? '🇺🇸' : '🇻🇳' 
-
-  const formatter = new Intl.NumberFormat(format, {
-    currency,
-    style: 'currency',
-  });
-
-  return (
-    <Text style={styles.currencyText}>
-      {formatter.format(props.value)} {flag}
-    </Text>
-  )
-}
-```
-
-</details>
-
-<details>
-
-<summary>Hint 2</summary>
-<br>
-
-Afterwards, we need to use this component in our body and pass it the values:
-
-```jsx
-<Text>
-  Current currency:
-</Text>
-<FormattedCurrency 
-  type={fromCurrency}
-  value={currentCurrencyValue}
-/>
-<Text>
-  Conversion currenecy:
-</Text>
-<FormattedCurrency 
-  type={toCurrency}
-  value={convertedCurrencyValue}
-/>
-```
-
-</details>
+- [ ] User can convert from USD to EURO.
+- [ ] User can convert from EURO to USD.
+- [ ] User can convert from VND to EURO.
+- [ ] User can convert from EURO to VND.
