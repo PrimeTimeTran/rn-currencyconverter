@@ -656,7 +656,7 @@ const ConversionTypeButton = ({
 
 **E)** Refactor our `convertCurrency` function to behave according to the current state of the applications `fromCurrency` value. If the `fromCurrency` is VND we divide by 23,000, else, we multiply by 23,000. Computer Science!
 
-Afterwards, we call the function we got for free `setConvertedValue` with the argument of thee new converted currenciees value.
+Afterwards, we call the function we got for free `setConvertedValue` with the argument of the new converted currenciees value.
 
 ```jsx
 const convertCurrency = () => {
@@ -673,7 +673,9 @@ const convertCurrency = () => {
 ![name](./assets/4e.gif)
 The app should behave like this now.
 
-**F)** Create a new component. Contemplate the data this component needs and how it should both get & consume it.
+**F)** Add appropriate formatting for currency.
+
+Create a new component `FormattedCurrency`. Contemplate the data this component needs and how it should both get & consume it for a moment before moving on.
 
 ```jsx
 const FormattedCurrency = (props) => {
@@ -694,9 +696,7 @@ const FormattedCurrency = (props) => {
 }
 ```
 
-**G)** Add this component to the body of `App`'s return.
-
-Afterwards, we need to use this component in our body and pass it the values:
+**G)** Add `FormattedCurrency` to the body of `App`'s return.
 
 ```jsx
 <Text>
@@ -716,6 +716,8 @@ Afterwards, we need to use this component in our body and pass it the values:
 ```
 
 ![pwd](./assets/intro.gif)
+
+We used a new datatype of `Intl.NumberFormat` to help us get the correct formatting. We did so by creating a new component `FormattedCurrency` which took two props `type` & `value`. In the body of the component definition we used these `props` to get our component to render accordingly.
 
 Everything should be working now. Excellent!
 
