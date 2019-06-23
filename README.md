@@ -18,7 +18,7 @@ Let's build a new app 📱 using [React Native](https://facebook.github.io/react
   - USD to VND
 - [ ] User can see a prompt showing the current value they've entered.
 - [ ] User can see a prompt showing the current value's converted value.
-- [ ] User can see both values formatted correctly for their regionale.
+- [ ] User can see both values formatted correctly for the currencies region.
 - [ ] User can switch from VND to USD or USD to VND.
 
 ### Learning Objectives ✍️📚📝 📈🙌 ️
@@ -681,7 +681,7 @@ Create a new component `FormattedCurrency`. Contemplate the data this component 
 const FormattedCurrency = (props) => {
   const format = props.type === 'usd' ? 'us' : 'vn'
   const currency = props.type === 'usd' ? 'USD' : 'VND'
-  const flag = props.type === 'usd' ? '🇺🇸' : '🇻🇳' 
+  const flag = props.type === 'usd' ? '🇺🇸' : '🇻🇳'
 
   const formatter = new Intl.NumberFormat(format, {
     currency,
@@ -702,14 +702,14 @@ const FormattedCurrency = (props) => {
 <Text>
   Current currency:
 </Text>
-<FormattedCurrency 
+<FormattedCurrency
   type={fromCurrency}
   value={currentCurrencyValue}
 />
 <Text>
   Conversion currenecy:
 </Text>
-<FormattedCurrency 
+<FormattedCurrency
   type={toCurrency}
   value={convertedCurrencyValue}
 />
@@ -753,7 +753,6 @@ Everything should be working now. Excellent!
 - `useEffect()` is used to apply state changes.
   - In other words, run this code after state has changed.
 
-
 ### Accomplishments 🎯🥇🏆💯
 
 - [X] User sees instructions advising them what to do
@@ -766,7 +765,7 @@ Everything should be working now. Excellent!
   - USD to VND
 - [X] User can see a prompt showing the current value they've entered
 - [X] User can see a prompt showing the current value's converted value
-- [X] User can see both values formatted correctly for their regionale
+- [ ] User can see both values formatted correctly for the currencies region.
 - [X] User can switch from VND to USD or USD to VND
 
 ### Rockets 🚀
