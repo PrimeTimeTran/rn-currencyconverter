@@ -24,14 +24,18 @@ Let's build a new app 📱 using [React Native](https://facebook.github.io/react
 ### Learning Objectives ✍️📚📝 📈🙌 ️
 
 1. Learn more about passing props.
-
+    - Recognize we can pass many different props to components. These props can be of many different datatypes 🍋🍎🍓🥦🌶️. Types include `boolean`, `string`, `object` & `function`.
 2. Learn how to build our own components which consume props.
+    - Recognize that the components we get for free from libraries 📚 work just like the ones we build 👷🏗️🏭.
 
 3. Learn how to compose our functional components with internal functions.
+    - Recognize that a well written component is composed of many smaller parts which encapsulate logic. These parts all work together ♻️.
 
 4. Learn how to [useState()](https://reactjs.org/docs/hooks-state.html) in our applications.
+    - Recognize that stateful applications are how we add dynamic 🔀 & engaging 🌠 behavior.
 
-5. Learn that we can listen for user inputs using components such as `TouchableOpacity` and props such as `onPress`.
+5. Learn that we can listen for user inputs using components ⚙️such as `TouchableOpacity` and props such as `onPress`.
+    - Recognize that we need to listen for key user 👨‍💻 events 📸.
 
 > **Tip** 💡: As we move forward we'll have smaller and smaller code snippets. We do this to encourage you to think about what the code does and where it is it needs to go.
 
@@ -708,11 +712,11 @@ The app should behave like this now.
 
 - [ ] User can see both values formatted correctly for their regionale. The flag should also be shown.
 
-Create a new component to complete this rocket. Try to think about what data this component needs and how it should get it. Here's one solution for those of you who need help.
+Create a new component to complete this rocket. Contemplate the data this component needs and how it should get it.
 
 <details>
 
-<summary>Part 1</summary>
+<summary>Hint 1</summary>
 <br>
 
 Here's the component:
@@ -740,7 +744,7 @@ const FormattedCurrency = (props) => {
 
 <details>
 
-<summary>Part 2</summary>
+<summary>Hint 2</summary>
 <br>
 
 Afterwards, we need to use this component in our body and pass it the values:
