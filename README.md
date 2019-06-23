@@ -2,14 +2,14 @@
 
 ## Introduction 🌟
 
-Let's build a new app 📱 using [React Native](https://facebook.github.io/react-native/) & [Expo](https://expo.io/).  Our app will help users convert currency 💵 from USD 🇺🇲 to VND 🇻🇳 as well as vice versa!
+Let's build a new app 📱 using [React Native](https://facebook.github.io/react-native/) & [Expo](https://expo.io/).  Our app will help users convert currency 💵 from USD 🇺🇲 to VND 🇻🇳. 
 
 ![pwd](./assets/intro.gif)
 
 ### Features 🎯 🥅🥇🏆
 
 - [ ] User sees instructions advising them what to do.
-- [ ] User can input data to our application, hint, `TextInput`.
+- [ ] User can input data to our application via a `TextInput`.
 - [ ] User can see a placeholder text in the input indicating an expected value to be entered by the user.
 - [ ] User can only enter numbers into the input.
 - [ ] User can see centered text in the input.
@@ -43,11 +43,11 @@ Let's build a new app 📱 using [React Native](https://facebook.github.io/react
 
 Create a new application using what we learned last week. This knowledge gives us a **sky 🛫🌤️** of possibilities.
 
-**A)**  Use `expo init currencyConvert` to generate a new project. Remember, it contains many folders 📂 and files 📑. Afterwards start the simulator.
+**A)**  Use `expo init currencyConvert` to generate a new project. Remember, it contains many folders 📂 and files 📑. Afterwards start the simulator. 
 
 ![pwd](./assets/1a.png)
 
-**B)** Prompt the user. Update the body of the return with instructions.
+**B)** Edit the placeholder for `App` to add some instructions for the user on how to use our app.  
 
 ```jsx
   return (
@@ -59,15 +59,7 @@ Create a new application using what we learned last week. This knowledge gives u
 
 ![pwd](./assets/1b.png)
 
-**C)** Grab a `TextInput` component from React Native so we can get the users desired conversion value.
-
-```jsx
-import {
-  TextInput,
-} from 'react-native'
-```
-
-**D)** Nest the `TextInput` inside of the body of the return.
+**C)** Now let's add a `TextInput` to the same `View`, so the user can input the amount of currency they'll need to change. Don't forget to import `TextInput` at the top of `App.js`. We'll add the `TextInput` below the instruction text from the previous sub-step.
 
 ```jsx
 <View style={styles.container}>
@@ -135,41 +127,40 @@ We nested the `TextInput` inside of the `View` below the `Text`, but we don't se
 
 > **Tip** 💡: We need to account for the keyboard in the layout when building for mobile. Failing to do this can be deadly ☠️❗🚫.
 
-**G)** Everythings bunched at the bottom. There's a lot of wasted space at the top. Move everything toward the top by updating the styles at the bottom of the file.
+**G)** Everything's bunched at the bottom. There's a lot of wasted space at the top. Move everything toward the top by updating the styles at the bottom of the file.
 
 ```jsx
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    marginTop: 50,
-    alignItems: 'center',
-    backgroundColor: '#fff',
     justifyContent: 'flex-start',
   },
 });
 ```
 
+@Loi: enter in some link to what is `justifyContent` and what the options are. 
+
 ![name](./assets/1f.png)
 Everything starts at the top of the screen now. Nice.
 
-**H)** Since were building a currency converter, it would be appropriate that the user should only be able to enter numbers. Pass the `TextInput` a new prop which makes the keyboard numpad type.
+**H)** Since were building a currency converter, it would be appropriate that the user should only be able to enter numbers. Pass the `TextInput` a new prop which makes the keyboard numpad type. You can find all the keyboard types documented at [https://facebook.github.io/react-native/docs/textinput#keyboardtype](https://facebook.github.io/react-native/docs/textinput#keyboardtype). 
 
+<details>
 ```jsx
 <TextInput
   keyboardType="number-pad"
 />
 ```
+</details>
 
 ![name](./assets/1g.png)
 
-Now we see that the keyboard is a number pad. Excellent.
 
-**I)** Exceptional apps will take anticipatory steps on behalf of users. Focus the `TextInput` when our app loads by adding a new prop.
+**I)** Last polish step: right now our user must tap on the text input when they first open the app. Let's make that automatic for our users by adding the [autoFocus prop](https://facebook.github.io/react-native/docs/textinput#autofocus). 
 
 ```jsx
 <TextInput
-  autoFocus // autoFocus === autoFocus={true}
+  autoFocus={true}
 />
 ```
 
@@ -223,7 +214,7 @@ All of this is the result of the props we passed to `TextInput`.
 ---
 > Key Points 🔑📝
 
-- There is a `TextInput` component provided for free from React Native.
+- There is a `TextInput` component provided from React Native.
 - There are many different properties we can pass `TextInput`. The properties can be of datatype `String`, `Boolean`, `Object`, and spoiler, `Function`.
 
 ---
@@ -232,15 +223,13 @@ All of this is the result of the props we passed to `TextInput`.
 
 Let's create a component which highlights the **from** and **to** currencies. It will also handle the user choosing between which currencies to convert. I advise we create a component because we want to **reuse the logic which handle this behavior** for **multiple conversion types**.
 
-**A)** Import a `TouchableOpacity` component from React Native.
+**A)** Import a `TouchableOpacity` component from React Native, which is a slightly more advanced version of a `Button`. 
 
 ```jsx
 import {
   TouchableOpacity,
 } from 'react-native'
 ```
-
-Remember, we get a lot of free components from React Native out the box. This component will handle user events soon.
 
 **B)** Let's go ahead and add some style to the `TouchableOpacity` component.
 
