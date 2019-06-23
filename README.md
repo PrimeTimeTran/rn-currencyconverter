@@ -4,22 +4,22 @@
 
 Let's build a new app 📱 using [React Native](https://facebook.github.io/react-native/) & [Expo](https://expo.io/).  Our app will help users convert currency 💵 from USD 🇺🇲 to VND 🇻🇳 as well as vice versa!
 
-![pwd](./assets/intro.png)
+![pwd](./assets/intro.gif)
 
 ### Features 🎯 🥅🥇🏆
 
-- [ ] User sees instructions advising them what to do
+- [ ] User sees instructions advising them what to do.
 - [ ] User can input data to our application, hint, `TextInput`.
-- [ ] User can see a placeholder text in the input indicating an expected value to be entered by the user
-- [ ] User can only enter numbers into the input
-- [ ] User can see centered text in the input
-- [ ] User can see two buttons indicating
+- [ ] User can see a placeholder text in the input indicating an expected value to be entered by the user.
+- [ ] User can only enter numbers into the input.
+- [ ] User can see centered text in the input.
+- [ ] User can see two buttons indicating:
   - VND to USD
   - USD to VND
-- [ ] User can see a prompt showing the current value they've entered
-- [ ] User can see a prompt showing the current value's converted value
-- [ ] User can see both values formatted correctly for their regionale
-- [ ] User can switch from VND to USD or USD to VND
+- [ ] User can see a prompt showing the current value they've entered.
+- [ ] User can see a prompt showing the current value's converted value.
+- [ ] User can see both values formatted correctly for their regionale.
+- [ ] User can switch from VND to USD or USD to VND.
 
 ### Learning Objectives ✍️📚📝 📈🙌 ️
 
@@ -665,3 +665,101 @@ const convertCurrency = () => {
 ```
 
 ![name](./assets/4e.gif)
+The app should behave like this now.
+
+
+---
+
+> **Key Points** 🔑📝
+
+- Adding state to our application adds dynamic behavior. We can change the state of the application by using state. In this case we changed the state of which currency the user wants to convert `from` & `to`.
+
+- Our components can be composed of many smaller functions which help us to branch behavior. Consider the `convertCurrency` & `setConversionCurrencies` functions we defined within the body of the `App` component.
+
+
+---
+
+## Review 💻🤓🤔
+
+- There are many different properties we can pass to components.
+
+- We can build our own components which take props as well.
+
+- We can add state to our application if we're familiar with `useState`.
+
+- Some components take functions as props, for example `onPress` in `TouchableOpacity`.
+
+### Accomplishments 🎯🥇🏆💯
+
+- [X] User sees instructions advising them what to do
+- [X] User can input data to our application, hint, `TextInput`
+- [X] User can see a placeholder text in the input indicating an expected value to be entered by the user
+- [X] User can only enter numbers into the input
+- [X] User can see centered text in the input
+- [X] User can see two buttons indicating
+  - VND to USD
+  - USD to VND
+- [X] User can see a prompt showing the current value they've entered
+- [X] User can see a prompt showing the current value's converted value
+- [ ] User can see both values formatted correctly for their regionale
+- [X] User can switch from VND to USD or USD to VND
+
+### Rocket 🚀
+
+- [ ] User can see both values formatted correctly for their regionale. The flag should also be shown.
+
+Create a new component to complete this rocket. Try to think about what data this component needs and how it should get it. Here's one solution for those of you who need help.
+
+<details>
+
+<summary>Part 1</summary>
+<br>
+
+Here's the component:
+
+```jsx
+const FormattedCurrency = (props) => {
+  const format = props.type === 'usd' ? 'us' : 'vn'
+  const currency = props.type === 'usd' ? 'USD' : 'VND'
+  const flag = props.type === 'usd' ? '🇺🇸' : '🇻🇳' 
+
+  const formatter = new Intl.NumberFormat(format, {
+    currency,
+    style: 'currency',
+  });
+
+  return (
+    <Text style={styles.currencyText}>
+      {formatter.format(props.value)} {flag}
+    </Text>
+  )
+}
+```
+
+</details>
+
+<details>
+
+<summary>Part 2</summary>
+<br>
+
+Afterwards, we need to use this component in our body and pass it the values:
+
+```jsx
+<Text>
+  Current currency:
+</Text>
+<FormattedCurrency 
+  type={fromCurrency}
+  value={currentCurrencyValue}
+/>
+<Text>
+  Conversion currenecy:
+</Text>
+<FormattedCurrency 
+  type={toCurrency}
+  value={convertedCurrencyValue}
+/>
+```
+
+</details>

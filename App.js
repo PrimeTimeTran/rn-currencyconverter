@@ -7,6 +7,23 @@ import {
   TouchableOpacity,
 } from 'react-native'
 
+const FormattedCurrency = (props) => {
+  const format = props.type === 'usd' ? 'us' : 'vn'
+  const currency = props.type === 'usd' ? 'USD' : 'VND'
+  const flag = props.type === 'usd' ? '🇺🇸' : '🇻🇳' 
+
+  const formatter = new Intl.NumberFormat(format, {
+    currency,
+    style: 'currency',
+  });
+
+  return (
+    <Text style={styles.currencyText}>
+      {formatter.format(props.value)} {flag}
+    </Text>
+  )
+}
+
 const ConversionTypeButton = (props) => {
   const backgroundColor = props.fromCurrency === props.from && props.toCurrency === props.to ? 'lightblue' : null
   const buttonStyle = { backgroundColor: backgroundColor  }
@@ -86,15 +103,17 @@ export default function App() {
       <Text>
         Current currency:
       </Text>
-      <Text style={styles.currencyText}>
-        {currentCurrencyValue}
-      </Text>
+      <FormattedCurrency 
+        type={fromCurrency}
+        value={currentCurrencyValue}
+      />
       <Text>
         Conversion currenecy:
       </Text>
-      <Text style={styles.currencyText}>
-        {convertedCurrencyValue}
-      </Text>
+      <FormattedCurrency 
+        type={toCurrency}
+        value={convertedCurrencyValue}
+      />
     </View>
   )
 }
