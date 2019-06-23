@@ -24,7 +24,7 @@ Let's build a new app 📱 using [React Native](https://facebook.github.io/react
 ### Learning Objectives ✍️📚📝 📈🙌 ️
 
 1. Learn more about passing props.
-    - Recognize we can pass many different props to components. These props can be of many different datatypes 🍋🍎🍓🥦🌶️. Types include `String`, `Boolean`, `Object`, and, `Function`.
+    - Recognize we can pass many different props to components. These props can be of many different datatypes 🍚🥦🍗🌶. Types include `String`, `Boolean`, `Object`, and, `Function`.
 2. Learn how to build our own components which consume props.
     - Recognize that the components we get for free from libraries 📚 work just like the ones we build 👷🏗️🏭.
 
@@ -733,13 +733,26 @@ Everything should be working now. Excellent!
 
 ## Review 💻🤓🤔
 
-- There are many different properties we can pass to components.
+- All components require some properties. The properties will be of many different shapes, many different data types 🍚🥦🍗🌶.
 
-- We can build our own components which take props as well.
+- We can build 🏗👷our own components to take props **easily**. These props will influence our component's behavior. Some of the props we passed were:
+  - `to="vnd"`
+  - `from="usd"`
+  - `toCurrency={toCurrency}`
+  - `fromCurrency={fromCurrency}`
+  - `setConversionCurrencies={setConversionCurrencies}`
+  - `type={fromCurrency}`
+  - `value={currentCurrencyValue}`
 
 - We can add state to our application if we're familiar with `useState`.
+  - `useState` is a function.
+  - The return value is an array
+  - `useState('Hello World')` would result in `'Hello World'` being the default state.
+  - The first index is the state variable.
+  - The second is known as a `setter` function/method.
+- `useEffect()` is used to apply state changes.
+  - In other words, run this code after state has changed.
 
-- Some components take functions as props, for example `onPress` in `TouchableOpacity`.
 
 ### Accomplishments 🎯🥇🏆💯
 
