@@ -24,18 +24,18 @@ Let's build a new app 📱 using [React Native](https://facebook.github.io/react
 ### Learning Objectives ✍️📚📝 📈🙌 ️
 
 1. Learn more about passing props.
-    - Recognize we can pass many different props to components. These props can be of many different datatypes 🍋🍎🍓🥦🌶️. Types include `boolean`, `string`, `object` & `function`.
+    - Recognize we can pass many different props to components. These props can be of many different datatypes 🍋🍎🍓🥦🌶️. Types include `String`, `Boolean`, `Object`, and, `Function`.
 2. Learn how to build our own components which consume props.
     - Recognize that the components we get for free from libraries 📚 work just like the ones we build 👷🏗️🏭.
 
 3. Learn how to compose our functional components with internal functions.
-    - Recognize that a well written component is composed of many smaller parts which encapsulate logic. These parts all work together ♻️.
+    - Recognize that a well written 📝⚖️ component is composed of many smaller parts which encapsulate logic. These parts all work together ♻️.
 
 4. Learn how to [useState()](https://reactjs.org/docs/hooks-state.html) in our applications.
     - Recognize that stateful applications are how we add dynamic 🔀 & engaging 🌠 behavior.
 
-5. Learn that we can listen for user inputs using components ⚙️such as `TouchableOpacity` and props such as `onPress`.
-    - Recognize that we need to listen for key user 👨‍💻 events 📸.
+5. Learn that we can have our code watch 🔍 for user events within our components ⚙️.
+    - Recognize that we need to listen for key user 👨‍💻 events 📸. `TouchableOpacity` and the prop `onPress` will be an important one.
 
 > **Tip** 💡: As we move forward we'll have smaller and smaller code snippets. We do this to encourage you to think about what the code does and where it is it needs to go.
 
@@ -82,11 +82,11 @@ import {
 
 #### Different Styles 💋👔⌨
 
-We show you different ways to write the same code so you can be aware of them.
+If a component contains no children you can close them with a `/>`.
 
 <details>
 
-<summary>Option 1</summary>
+<summary>Non self closing</summary>
 
 ```jsx
 <View style={styles.container}>
@@ -99,7 +99,7 @@ We show you different ways to write the same code so you can be aware of them.
 
 <details>
 
-<summary>Option 2</summary>
+<summary>Self closing</summary>
 
 ```jsx
 <View style={styles.container}>
@@ -217,7 +217,7 @@ If your screen looks like this then good work. We indicated to the user what we 
 
 ### **Milestone 2 🛣🏃 Complete layout by creating our own component**
 
-Let's create a component which highlights the **from** and **to** currencies. It will also handle the user choosing between which currencies to convert as well. I advise we create a component because we want to reuse the logic which handles these use cases.
+Let's create a component which highlights the **from** and **to** currencies. It will also handle the user choosing between which currencies to convert. I advise we create a component because we want to **reuse the logic which handle this behavior** for **multiple conversion types**.
 
 **A)** Import a `TouchableOpacity` component from React Native.
 
@@ -269,7 +269,7 @@ return (
 ```
 
 ![name](./assets/2a.png)
-We can see a VND to USD button now. This one will handle VND to USD conversion for the user. Now the power of React is going to shine. Let's use this component again in order to add a USD to VND button.
+We can see a VND to USD button now. This one will handle VND to USD conversion for the user. Now we need to do the same thing for USD to VND. Nest another `ConversionTypeButton` component in the body of the return.
 
 **E)** Add a second `ConversionTypeButton` for USD to VND
 
@@ -283,13 +283,15 @@ return (
 ```
 
 ![name](./assets/2d.png)
-We have two buttons but we have a problem. The buttons say the **exact same thing**.
+We have two buttons but we have a problem ☠️❗🚫. The buttons say the **exact same thing**. That's not what we want.
 
 #### How can we fix this?
 
 We can fix this by applying a concept we learned last week. We can pass props to our component.
 
-**D)** Pass two new props `from` & `to` to our `ConversionTypeButton` component when we nest it in the body of `App`. Contemplate  the value of these properties.
+**D)** Pass two new props `from` & `to` to our `ConversionTypeButton` component when we nest it in the body of `App`. Contemplate  the value of these properties. 
+
+#### How are they the same. How are they different?
 
 ```jsx
 return (
@@ -306,7 +308,7 @@ return (
 )
 ```
 
-Now we've got two props passed to our `ConversionTypeButton`. That isn't enough though we need to take these props and do additional work.
+Now we've got two props passed to our `ConversionTypeButton`. That isn't enough though. The component needs to be smarter.
 
 **E)** Refactor `ConversionTypeButton` to behave correctly based on these new props, `to` & `from`.
 
@@ -329,7 +331,7 @@ We should now see our buttons render with the appropriate flags. Nice.
 
 #### Different Styles 💋👔⌨
 
-Here's a couple different ways we could have refactored `<ConversionTypeButton />`
+Here's a couple different ways we could have refactored `<ConversionTypeButton />`. The `if` conditional means we dont repeat the ternary. However, we have to define  the `toFlag` and `fromFlag` twice. Which one do you like and why?
 
 <details>
 
@@ -593,11 +595,11 @@ const ConversionTypeButton = (props) => {
 
 #### Different Styles 💋👔⌨
 
-We show you different ways to write the same code so you can be aware of them.
+ES6 destructuring is the authors preferred method of writing this code.
 
 <details>
 
-<summary>Option 1</summary>
+<summary>Better</summary>
 
 ```jsx
 const ConversionTypeButton = ({ fromCurrency, toCurrency, from, to, setConversionCurrencies}) => {
@@ -622,7 +624,7 @@ const ConversionTypeButton = ({ fromCurrency, toCurrency, from, to, setConversio
 
 <details>
 
-<summary>Option 2</summary>
+<summary>Best</summary>
 
 ```jsx
 const ConversionTypeButton = ({
@@ -634,14 +636,14 @@ const ConversionTypeButton = ({
 }) => {
   const isSelectedConversionType = fromCurrency === from && toCurrency === to
   const backgroundColor = isSelectedConversionType ? 'lightblue' : null
-  const buttonStyle = { backgroundColor: backgroundColor  }
+  const conditionalButtonStyle = { backgroundColor }
 
   const fromFlag = from === 'usd' ? '🇺🇸' : '🇻🇳'
   const toFlag = to === 'usd' ? '🇺🇸' : '🇻🇳'
 
   return (
     <TouchableOpacity
-      style={[styles.button, buttonStyle]}
+      style={[styles.button, conditionalButtonStyle]}
       onPress={() => setConversionCurrencies(from, to)}
     >
       <Text style={styles.buttonText}>{fromFlag} to {toFlag}</Text>
