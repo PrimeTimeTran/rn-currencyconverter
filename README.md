@@ -121,7 +121,7 @@ We nested the `TextInput` inside of the `View` below the `Text`, but we don't se
 
 ![name](./assets/1d.png)
 
-**F)** Now enable your simulator's **Keyboard**. 
+**F)** Now enable your simulator's **Keyboard**.
 
 ![name](./assets/1e.png)
 
@@ -133,12 +133,14 @@ We nested the `TextInput` inside of the `View` below the `Text`, but we don't se
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 50,	
+    alignItems: 'center',	
     justifyContent: 'flex-start',
   },
 });
 ```
 
-@Loi: enter in some link to what is `justifyContent` and what the options are. 
+Here we're using flexbox to position things. Learn more [here](https://css-tricks.com/almanac/properties/j/justify-content/). Here's a more [detailed explanation](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
 
 ![name](./assets/1f.png)
 Everything starts at the top of the screen now. Nice.
@@ -223,7 +225,7 @@ All of this is the result of the props we passed to `TextInput`.
 
 Let's create a component which highlights the **from** and **to** currencies. It will also handle the user choosing between which currencies to convert. I advise we create a component because we want to **reuse the logic which handle this behavior** for **multiple conversion types**.
 
-**A)** Import a `TouchableOpacity` component from React Native, which is a slightly more advanced version of a `Button`. 
+**A)** Import a `TouchableOpacity` component from React Native, which is a slightly more advanced version of a `Button`.
 
 ```jsx
 import {
@@ -236,8 +238,8 @@ import {
 ```jsx
 const styles = StyleSheet.create({
   button: {
-    height: 35, 
-    width: 200, 
+    height: 35,
+    width: 200,
     margin: 10,
     borderWidth: 2,
     borderRadius: 20,
@@ -253,7 +255,7 @@ const styles = StyleSheet.create({
 ```jsx
 const ConversionTypeButton = () => {
   return (
-    <TouchableOpacity style={styles.button}>
+    <TouchableOpacity style={styles.button}>  
       <Text>VND to USD</Text>
     </TouchableOpacity>
   )
@@ -291,7 +293,7 @@ We have two buttons but we have a problem ☠️❗🚫. The buttons say the **e
 
 We can fix this by applying a concept we learned last week. We can pass props to our component.
 
-**D)** Pass two new props `from` & `to` to our `ConversionTypeButton` component when we nest it in the body of `App`. Contemplate  the value of these properties. 
+**D)** Pass two new props `from` & `to` to our `ConversionTypeButton` component when we nest it in the body of `App`. Contemplate  the value of these properties.
 
 #### How are they the same. How are they different?
 

@@ -10,7 +10,7 @@ import {
 const FormattedCurrency = (props) => {
   const format = props.type === 'usd' ? 'us' : 'vn'
   const currency = props.type === 'usd' ? 'USD' : 'VND'
-  const flag = props.type === 'usd' ? '🇺🇸' : '🇻🇳' 
+  const flag = props.type === 'usd' ? '🇺🇸 USD' : '🇻🇳 VND' 
 
   const formatter = new Intl.NumberFormat(format, {
     currency,
@@ -28,8 +28,8 @@ const ConversionTypeButton = (props) => {
   const backgroundColor = props.fromCurrency === props.from && props.toCurrency === props.to ? 'lightblue' : null
   const buttonStyle = { backgroundColor: backgroundColor  }
 
-  const fromFlag = props.from === 'usd' ? '🇺🇸' : '🇻🇳'
-  const toFlag = props.to === 'usd' ? '🇺🇸' : '🇻🇳'
+  const fromFlag = props.from === 'usd' ? '🇺🇸 USD' : '🇻🇳 VND'
+  const toFlag = props.to === 'usd' ? '🇺🇸 USD' : '🇻🇳 VND'
 
   return (
     <TouchableOpacity
@@ -121,10 +121,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    marginTop: 50,
-    alignItems: 'center',
-    backgroundColor: '#fff',
+    marginTop: 50,	
+    alignItems: 'center',	
     justifyContent: 'flex-start',
   },
   button: {
