@@ -61,8 +61,8 @@ export default function App() {
 
 
   const setConversionCurrencies = (from, to) => {
-    setFromCurrency(from)
     setToCurrency(to)
+    setFromCurrency(from)
   }
 
   return (
@@ -75,16 +75,9 @@ export default function App() {
         textAlign="center"
         selectionColor="red"
         keyboardType="number-pad"
+        style={styles.inputStyle}
         placeholder="100,000,000 VND"
         onChangeText={setFromCurrencyValue}
-        style={{
-          height: 60,
-          padding: 5,
-          width: 300,
-          fontSize: 35,
-          borderWidth: 1,
-          borderColor: 'lightblue'
-        }}
       />
       <ConversionTypeButton 
         to="usd"
@@ -139,5 +132,13 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: 'green',
     fontWeight: 'bold'
+  },
+  inputStyle: {
+    height: 60,
+    padding: 5,
+    width: 300,
+    fontSize: 35,
+    borderWidth: 1,
+    borderColor: 'lightblue'
   }
 })
