@@ -6,7 +6,7 @@ Let's build a new app 📱 using [React Native](https://facebook.github.io/react
 
 ![pwd](./assets/intro.gif)
 
-### Features 🎯 🥅🥇🏆
+### Features 🎯🥇🏆
 
 - [ ] User sees instructions advising them what to do.
 - [ ] User can input data to our application via a `TextInput`.
@@ -21,7 +21,7 @@ Let's build a new app 📱 using [React Native](https://facebook.github.io/react
 - [ ] User can see both values formatted correctly for the currencies region.
 - [ ] User can switch from VND to USD or USD to VND.
 
-### Learning Objectives ✍️📚📝 📈🙌 ️
+### Learning Objectives ✍️📚📝
 
 1. Learn more about passing props.
     - Recognize we can pass many different props to components. These props can be of many different datatypes 🍚🥦🍗🌶. Types include `String`, `Boolean`, `Object`, and, `Function`.
@@ -555,8 +555,8 @@ const [fromCurrency, setFromCurrency] = useState('vnd')
 
 ```jsx
 const setConversionCurrencies = (from, to) => {
-  setFromCurrency(from)
   setToCurrency(to)
+  setFromCurrency(from)
 }
 ```
 
@@ -757,7 +757,7 @@ Everything should be working now. Excellent!
 - `useEffect()` is used to apply state changes.
   - In other words, run this code after state has changed.
 
-### Accomplishments 🎯🥇🏆💯
+### Accomplishments 🥇🏆💯
 
 - [X] User sees instructions advising them what to do
 - [X] User can input data to our application, hint, `TextInput`

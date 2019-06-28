@@ -1,35 +1,35 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { 
   Text,
   View,
   TextInput,
   StyleSheet, 
   TouchableOpacity,
-} from 'react-native'
+} from 'react-native';
 
 const FormattedCurrency = (props) => {
-  const format = props.type === 'usd' ? 'us' : 'vn'
-  const currency = props.type === 'usd' ? 'USD' : 'VND'
-  const flag = props.type === 'usd' ? '🇺🇸 USD' : '🇻🇳 VND' 
+  const currencyType = props.type === 'usd' ? '🇺🇸 USD' : '🇻🇳 VND';
 
-  const formatter = new Intl.NumberFormat(format, {
-    currency,
+  const formatter = new Intl.NumberFormat(props.type, {
+    currency: props.type,
     style: 'currency',
   });
 
+  const formattedCurrency = `${formatter.format(props.value)} ${currencyType}`;
+
   return (
     <Text style={styles.currencyText}>
-      {formatter.format(props.value)} {flag}
+      {formattedCurrency}
     </Text>
-  )
-}
+  );
+};
 
 const ConversionTypeButton = (props) => {
-  const backgroundColor = props.fromCurrency === props.from && props.toCurrency === props.to ? 'lightblue' : null
-  const buttonStyle = { backgroundColor: backgroundColor  }
+  const backgroundColor = props.fromCurrency === props.from && props.toCurrency === props.to ? 'lightblue' : null;
+  const buttonStyle = { backgroundColor: backgroundColor };
 
-  const fromFlag = props.from === 'usd' ? '🇺🇸 USD' : '🇻🇳 VND'
-  const toFlag = props.to === 'usd' ? '🇺🇸 USD' : '🇻🇳 VND'
+  const fromFlag = props.from === 'usd' ? '🇺🇸 USD' : '🇻🇳 VND';
+  const toFlag = props.to === 'usd' ? '🇺🇸 USD' : '🇻🇳 VND';
 
   return (
     <TouchableOpacity
@@ -38,36 +38,35 @@ const ConversionTypeButton = (props) => {
     >
       <Text style={styles.buttonText}>{fromFlag} to {toFlag}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 export default function App() {
-  const [fromCurrency, setFromCurrency] = useState('vnd')
-  const [toCurrency, setToCurrency] = useState('usd')
-  const [currentCurrencyValue, setFromCurrencyValue] = useState(0)
-  const [convertedCurrencyValue, setConvertedValue] = useState(0)
+  const [fromCurrency, setFromCurrency] = useState('vnd');
+  const [toCurrency, setToCurrency] = useState('usd');
+  const [currentCurrencyValue, setFromCurrencyValue] = useState(0);
+  const [convertedCurrencyValue, setConvertedValue] = useState(0);
 
   const convertCurrency = () => {
-    let value
+    let value;
     if (fromCurrency === 'vnd') {
-      value = currentCurrencyValue / 23000
+      value = currentCurrencyValue / 23000;
     } else {
-      value =  23000 * currentCurrencyValue
-    }
-    setConvertedValue(value)
-  }
+      value =  23000 * currentCurrencyValue;
+    };
+    setConvertedValue(value);
+  };
 
-  useEffect(convertCurrency)
-
+  useEffect(convertCurrency);
 
   const setConversionCurrencies = (from, to) => {
-    setToCurrency(to)
-    setFromCurrency(from)
-  }
+    setToCurrency(to);
+    setFromCurrency(from);
+  };
 
   return (
     <View style={styles.container}>
-      <Text>
+      <Text style={styles.prompt}>
         Please enter the value of the currency you want to convert
       </Text>
       <TextInput
@@ -108,15 +107,19 @@ export default function App() {
         value={convertedCurrencyValue}
       />
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 50,	
+    marginTop: '10%',	
     alignItems: 'center',	
     justifyContent: 'flex-start',
+  },
+  prompt: {
+    margin: 20,
+    fontSize: 20,
   },
   button: {
     height: 35, 
@@ -141,4 +144,4 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'lightblue'
   }
-})
+});
