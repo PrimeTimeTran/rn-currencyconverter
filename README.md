@@ -1,4 +1,4 @@
-# Week 2 - **Currency 💵💴💶💷 Converter**
+# WK2 - Lab - **Currency 💵💴💶💷 Converter**
 
 ## Introduction 🌟
 
