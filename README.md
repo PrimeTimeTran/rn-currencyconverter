@@ -1,10 +1,10 @@
-# WK2 - Lab - **Currency 💵💴💶💷 Converter**
+# WK3 - Lab - **Currency 💵💴💶💷 Converter**
 
 ## Introduction 🌟
 
-Let's build a new app 📱 using [React Native](https://facebook.github.io/react-native/) & [Expo](https://expo.io/).  Our app will help users convert currency 💵 from USD 🇺🇲 to VND 🇻🇳. 
+Let's build a new app 📱 using [React Native](https://facebook.github.io/react-native/) & [Expo](https://expo.io/).  Our app will help users convert currency 💵 from USD 🇺🇲 to VND 🇻🇳.
 
-![pwd](./assets/intro.gif)
+![pwd](./assets3/intro.gif)
 
 ### Features 🎯🥇🏆
 
@@ -45,7 +45,7 @@ Create a new application using what we learned last week. This knowledge gives u
 
 **A)**  Use `expo init currencyConvert` to generate a new project. Remember, it contains many folders 📂 and files 📑. Afterwards start the simulator. 
 
-![pwd](./assets/1a.png)
+![pwd](./assets3/1a.png)
 
 **B)** Edit the placeholder for `App` to add some instructions for the user on how to use our app.  
 
@@ -57,7 +57,7 @@ Create a new application using what we learned last week. This knowledge gives u
   );
 ```
 
-![pwd](./assets/1b.png)
+![pwd](./assets3/1b.png)
 
 **C)** Now let's add a `TextInput` to the same `View`, so the user can input the amount of currency they'll need to change. Don't forget to import `TextInput` at the top of `App.js`. We'll add the `TextInput` below the instruction text from the previous sub-step.
 
@@ -70,7 +70,7 @@ Create a new application using what we learned last week. This knowledge gives u
 </View>
 ```
 
-![pwd](./assets/1c.png)
+![pwd](./assets3/1c.png)
 
 #### Different Styles 💋👔⌨
 
@@ -119,11 +119,11 @@ We nested the `TextInput` inside of the `View` below the `Text`, but we don't se
 />
 ```
 
-![name](./assets/1d.png)
+![name](./assets3/1d.png)
 
 **F)** Now enable your simulator's **Keyboard**.
 
-![name](./assets/1e.png)
+![name](./assets3/1e.png)
 
 > **Tip** 💡: We need to account for the keyboard in the layout when building for mobile. Failing to do this can be deadly ☠️❗🚫.
 
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
 
 Here we're using flexbox to position things. Learn more [here](https://css-tricks.com/almanac/properties/j/justify-content/). Here's a more [detailed explanation](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
 
-![name](./assets/1f.png)
+![name](./assets3/1f.png)
 Everything starts at the top of the screen now. Nice.
 
 **H)** Since were building a currency converter, it would be appropriate that the user should only be able to enter numbers. Pass the `TextInput` a new prop which makes the keyboard numpad type. You can find all the keyboard types documented at [https://facebook.github.io/react-native/docs/textinput#keyboardtype](https://facebook.github.io/react-native/docs/textinput#keyboardtype). 
@@ -155,7 +155,7 @@ Everything starts at the top of the screen now. Nice.
 ```
 </details>
 
-![name](./assets/1g.png)
+![name](./assets3/1g.png)
 
 
 **I)** Last polish step: right now our user must tap on the text input when they first open the app. Let's make that automatic for our users by adding the [autoFocus prop](https://facebook.github.io/react-native/docs/textinput#autofocus). 
@@ -166,7 +166,7 @@ Everything starts at the top of the screen now. Nice.
 />
 ```
 
-![name](./assets/1h.png)
+![name](./assets3/1h.png)
 We should now see the `TextInput` focus immediately. The keyboard should also reveal.
 
 **J)** Center the text in the input so it looks better.
@@ -177,7 +177,7 @@ We should now see the `TextInput` focus immediately. The keyboard should also re
 />
 ```
 
-![name](./assets/1i.png)
+![name](./assets3/1i.png)
 
 **K)** Let's add a `placeholder` **prop** as well to be super explicit to the user on our expectations.
 
@@ -187,7 +187,7 @@ We should now see the `TextInput` focus immediately. The keyboard should also re
 />
 ```
 
-![name](./assets/1j.png)
+![name](./assets3/1j.png)
 
 **L)** Choose a custom color for the cursor. Add the prop `selectionColor`.
 
@@ -197,7 +197,7 @@ We should now see the `TextInput` focus immediately. The keyboard should also re
 />
 ```
 
-![name](./assets/1k.png)
+![name](./assets3/1k.png)
 If your screen looks like this then good work. We indicated to the user what we want. We've also made some sensible decisions in terms of user experience. The `TextInput` component is auto focused, the keyboard is of type `Number`, the placeholder is a value which shows an appropriate input.
 
 All of this is the result of the props we passed to `TextInput`.
@@ -272,7 +272,7 @@ return (
   )
 ```
 
-![name](./assets/2a.png)
+![name](./assets3/2a.png)
 We can see a VND to USD button now. This one will handle VND to USD conversion for the user. Now we need to do the same thing for USD to VND. Nest another `ConversionTypeButton` component in the body of the return.
 
 **E)** Add a second `ConversionTypeButton` for USD to VND
@@ -286,7 +286,7 @@ return (
   )
 ```
 
-![name](./assets/2d.png)
+![name](./assets3/2d.png)
 We have two buttons but we have a problem ☠️❗🚫. The buttons say the **exact same thing**. That's not what we want.
 
 #### How can we fix this?
@@ -330,7 +330,7 @@ const ConversionTypeButton = (props) => {
 }
 ```
 
-![name](./assets/2e.png)
+![name](./assets3/2e.png)
 We should now see our buttons render with the appropriate flags. Nice.
 
 #### Different Styles 💋👔⌨
@@ -420,7 +420,7 @@ return (
 )
 ```
 
-![name](./assets/2f.png)
+![name](./assets3/2f.png)
 
 We should see the two prompts above the two `from` & `to` now.
 
@@ -474,7 +474,7 @@ const [currentCurrencyValue, setFromCurrencyValue] = useState(0)
 </Text>
 ```
 
-![name](./assets/3a.png)
+![name](./assets3/3a.png)
 
 You should now see a `0` underneath 'Current currency'
 
@@ -489,7 +489,7 @@ Pass as a new property to our `TextInput` component. The value is the second ind
 >
 ```
 
-![name](./assets/3b.png)
+![name](./assets3/3b.png)
 
 We should now see that the current currency value follows that of the `TextInput`.
 
@@ -505,7 +505,7 @@ const [convertedCurrencyValue, setConvertedValue] = useState(0)
 </Text>
 ```
 
-![name](./assets/3c.png)
+![name](./assets3/3c.png)
 We should now see a `0` underneath 'Convesion Currency'. However, if you look closely, when the user enters 100,000 VND, the converted currency value does not change.
 
 **D)** Implement converted currency behaving as expected from VND to USD.
@@ -527,7 +527,7 @@ const convertCurrency = () => {
 useEffect(convertCurrency)
 ```
 
-![name](./assets/3d.png)
+![name](./assets3/3d.png)
 
 We should now see that the current and conversion values change.
 
@@ -674,7 +674,7 @@ const convertCurrency = () => {
 }
 ```
 
-![name](./assets/4e.gif)
+![name](./assets3/4e.gif)
 The app should behave like this now.
 
 **F)** Add appropriate formatting for currency.
@@ -719,7 +719,7 @@ const FormattedCurrency = (props) => {
 />
 ```
 
-![pwd](./assets/intro.gif)
+![pwd](./assets3/intro.gif)
 
 We used a new datatype of `Intl.NumberFormat` to help us get the correct formatting. We did so by creating a new component `FormattedCurrency` which took two props `type` & `value`. In the body of the component definition we used these `props` to get our component to render accordingly.
 
