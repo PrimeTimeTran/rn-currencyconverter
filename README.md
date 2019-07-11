@@ -4,16 +4,16 @@
 
 Let's build a new app 📱 using [React Native](https://facebook.github.io/react-native/) & [Expo](https://expo.io/). Our app will help users convert currency 💵 from USD 🇺🇲 to VND 🇻🇳.
 
-![](https://i.imgur.com/GmdiaKz.gif)
+![](https://i.imgur.com/9LR0NFi.gif)
 
 ### Features 🎯🥇🏆
 
 - [ ] User sees instructions advising them what to do.
-- [ ] User can input data to our application, hint, `TextInput`.
+- [ ] User can input data to our application via a `TextInput`.
 - [ ] User can see a placeholder text in the input indicating an expected value to be entered by the user.
 - [ ] User can only enter numbers into the input.
 - [ ] User can see centered text in the input.
-- [ ] User can see two buttons indicating.
+- [ ] User can see two buttons indicating:
   - VND to USD
   - USD to VND
 - [ ] User can see a prompt showing the current value they've entered.
@@ -24,21 +24,19 @@ Let's build a new app 📱 using [React Native](https://facebook.github.io/react
 ### Learning Objectives ✍️📚📝
 
 1. Learn more about passing props.
-   - Recognize we can pass many different props to components. These props can be of many different datatypes 🍚🥦🍗🌶. Types include `String`, `Boolean`, `Object`, and, `Function`.
+    - Recognize we can pass many different props to components. These props can be of many different datatypes 🍚🥦🍗🌶. Types include `String`, `Boolean`, `Object`, and, `Function`.
+  
 2. Learn how to build our own components which consume props.
-
-   - Recognize that the components we get for free from libraries 📚 work just like the ones we build 👷🏗️🏭.
+    - Recognize that the components we get for free from libraries 📚 work just like the ones we build 👷🏗️🏭.
 
 3. Learn how to compose our functional components with internal functions.
-
-   - Recognize that a well written 📝⚖️ component is composed of many smaller parts which encapsulate logic. These parts all work together ♻️.
+    - Recognize that a well written 📝⚖️ component is composed of many smaller parts which encapsulate logic. These parts all work together ♻️.
 
 4. Learn how to [useState()](https://reactjs.org/docs/hooks-state.html) in our applications.
-
-   - Recognize that stateful applications are how we add dynamic 🔀 & engaging 🌠 behavior.
+    - Recognize that stateful applications are how we add dynamic 🔀 & engaging 🌠 behavior.
 
 5. Learn that we can have our code watch 🔍 for user events within our components ⚙️.
-   - Recognize that we need to listen for key user 👨‍💻 events 📸. `TouchableOpacity` and the prop `onPress` will be an important one.
+    - Recognize that we need to listen for key user 👨‍💻 events 📸. `TouchableOpacity` and the prop `onPress` will be an important one.
 
 > **Tip** 💡: As we move forward we'll have smaller and smaller code snippets. We do this to encourage you to think about what the code does and where it is it needs to go.
 
@@ -115,7 +113,7 @@ We nested the `TextInput` inside of the `View` below the `Text`, but we don't se
     width: 300,
     fontSize: 35,
     borderWidth: 1,
-    borderColor: "lightblue"
+    borderColor: 'lightblue'
   }}
 />
 ```
@@ -135,8 +133,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 50,
-    alignItems: "center",
-    justifyContent: "flex-start"
+    alignItems: 'center',
+    justifyContent: 'flex-start'
   }
 });
 ```
@@ -151,7 +149,9 @@ Everything starts at the top of the screen now. Nice.
 <details>
 
 ```jsx
-<TextInput keyboardType="number-pad" />
+<TextInput
+  keyboardType="number-pad"
+/>
 ```
 
 </details>
@@ -221,7 +221,7 @@ Let's create a component which highlights the **from** and **to** currencies. It
 **A)** Import a `TouchableOpacity` component from React Native, which is a slightly more advanced version of a `Button`.
 
 ```jsx
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity } from 'react-native';
 ```
 
 **B)** Let's go ahead and add some style to the `TouchableOpacity` component.
@@ -234,9 +234,9 @@ const styles = StyleSheet.create({
     margin: 10,
     borderWidth: 2,
     borderRadius: 20,
-    alignItems: "center",
-    borderColor: "lightblue",
-    justifyContent: "center"
+    alignItems: 'center',
+    borderColor: 'lightblue',
+    justifyContent: 'center'
   }
 });
 ```
@@ -305,8 +305,8 @@ The result is the component rendering the appropriate flags based on the props s
 
 ```jsx
 const ConversionTypeButton = props => {
-  const fromFlag = props.from === "usd" ? "🇺🇲" : "🇻🇳";
-  const toFlag = props.to === "usd" ? "🇺🇲" : "🇻🇳";
+  const fromFlag = props.from === 'usd' ? '🇺🇲' : '🇻🇳';
+  const toFlag = props.to === 'usd' ? '🇺🇲' : '🇻🇳';
   return (
     <TouchableOpacity style={styles.button}>
       <Text>
@@ -330,8 +330,8 @@ Here's a couple different ways we could have refactored `<ConversionTypeButton /
 
 ```jsx
 const ConversionTypeButton = ({ from, to }) => {
-  const fromFlag = from === "usd" ? "🇺🇲" : "🇻🇳";
-  const toFlag = to === "usd" ? "🇺🇲" : "🇻🇳";
+  const fromFlag = from === 'usd' ? '🇺🇲' : '🇻🇳';
+  const toFlag = to === 'usd' ? '🇺🇲' : '🇻🇳';
   return (
     <TouchableOpacity style={styles.button}>
       <Text>
@@ -353,12 +353,12 @@ const ConversionTypeButton = ({ from, to }) => {
   let toFlag;
   let fromFlag;
 
-  if (from === "usd") {
-    toFlag = "🇻🇳";
-    fromFlag = "🇺🇲";
+  if (from === 'usd') {
+    toFlag = '🇻🇳';
+    fromFlag = '🇺🇲';
   } else {
-    toFlag = "🇺🇲";
-    fromFlag = "🇻🇳";
+    toFlag = '🇺🇲';
+    fromFlag = '🇻🇳';
   }
 
   return (
@@ -383,8 +383,8 @@ We need to help the user understand what the input and conversion values are as 
 const styles = StyleSheet.create({
   currencyText: {
     fontSize: 30,
-    color: "green",
-    fontWeight: "bold"
+    color: 'green',
+    fontWeight: 'bold'
   }
 });
 ```
@@ -433,7 +433,7 @@ State can represent anything we can imagine.
 1. Grab two new dependencies from React, `useState` & `useEffect`. These two functions are introduced to handle state.
 
 ```jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 ```
 
 2. Use state in the body of the `App` component's definition. Call the function `useState` with an argument of `0`.
@@ -528,8 +528,8 @@ Lets get the currency formatted, button highlighted if it's the current conversi
 **A)** Add two new pieces of state, `toCurrency` & `fromCurrency`. These values will represent which currencies the user wants to exchange `from` & `to` respectively.
 
 ```jsx
-const [toCurrency, setToCurrency] = useState("usd");
-const [fromCurrency, setFromCurrency] = useState("vnd");
+const [toCurrency, setToCurrency] = useState('usd');
+const [fromCurrency, setFromCurrency] = useState('vnd');
 ```
 
 **B)** Define a new function which will handle the user changing the conversion they want to make.
@@ -563,12 +563,12 @@ const setConversionCurrencies = (from, to) => {
 const ConversionTypeButton = props => {
   const backgroundColor =
     props.fromCurrency === props.from && props.toCurrency === props.to
-      ? "lightblue"
+      ? 'lightblue'
       : null;
   const buttonStyle = { backgroundColor: backgroundColor };
 
-  const fromFlag = props.from === "usd" ? "🇺🇸" : "🇻🇳";
-  const toFlag = props.to === "usd" ? "🇺🇸" : "🇻🇳";
+  const fromFlag = props.from === 'usd' ? '🇺🇸' : '🇻🇳';
+  const toFlag = props.to === 'usd' ? '🇺🇸' : '🇻🇳';
 
   return (
     <TouchableOpacity
@@ -600,11 +600,11 @@ const ConversionTypeButton = ({
   setConversionCurrencies
 }) => {
   const backgroundColor =
-    fromCurrency === from && toCurrency === to ? "lightblue" : null;
+    fromCurrency === from && toCurrency === to ? 'lightblue' : null;
   const buttonStyle = { backgroundColor: backgroundColor };
 
-  const fromFlag = from === "usd" ? "🇺🇸" : "🇻🇳";
-  const toFlag = to === "usd" ? "🇺🇸" : "🇻🇳";
+  const fromFlag = from === 'usd' ? '🇺🇸' : '🇻🇳';
+  const toFlag = to === 'usd' ? '🇺🇸' : '🇻🇳';
 
   return (
     <TouchableOpacity
@@ -634,11 +634,11 @@ const ConversionTypeButton = ({
   setConversionCurrencies
 }) => {
   const isSelectedConversionType = fromCurrency === from && toCurrency === to;
-  const backgroundColor = isSelectedConversionType ? "lightblue" : null;
+  const backgroundColor = isSelectedConversionType ? 'lightblue' : null;
   const conditionalButtonStyle = { backgroundColor };
 
-  const fromFlag = from === "usd" ? "🇺🇸" : "🇻🇳";
-  const toFlag = to === "usd" ? "🇺🇸" : "🇻🇳";
+  const fromFlag = from === 'usd' ? '🇺🇸' : '🇻🇳';
+  const toFlag = to === 'usd' ? '🇺🇸' : '🇻🇳';
 
   return (
     <TouchableOpacity
@@ -662,7 +662,7 @@ Afterwards, we call the function we got for free `setConvertedValue` with the ar
 ```jsx
 const convertCurrency = () => {
   let value;
-  if (fromCurrency === "vnd") {
+  if (fromCurrency === 'vnd') {
     value = currentCurrencyValue / 23000;
   } else {
     value = 23000 * currentCurrencyValue;
@@ -680,13 +680,13 @@ Create a new component `FormattedCurrency`. Contemplate the data this component 
 
 ```jsx
 const FormattedCurrency = props => {
-  const format = props.type === "usd" ? "us" : "vn";
-  const currency = props.type === "usd" ? "USD" : "VND";
-  const flag = props.type === "usd" ? "🇺🇸" : "🇻🇳";
+  const format = props.type === 'usd' ? 'us' : 'vn';
+  const currency = props.type === 'usd' ? 'USD' : 'VND';
+  const flag = props.type === 'usd' ? '🇺🇸' : '🇻🇳';
 
   const formatter = new Intl.NumberFormat(format, {
     currency,
-    style: "currency"
+    style: 'currency'
   });
 
   return (
@@ -716,7 +716,7 @@ const FormattedCurrency = props => {
 />
 ```
 
-![](https://i.imgur.com/GmdiaKz.gif)
+![](https://i.imgur.com/9LR0NFi.gif)
 
 We used a new datatype of `Intl.NumberFormat` to help us get the correct formatting. We did so by creating a new component `FormattedCurrency` which took two props `type` & `value`. In the body of the component definition we used these `props` to get our component to render accordingly.
 
@@ -757,18 +757,18 @@ Everything should be working now. Excellent!
 
 ### Accomplishments 🥇🏆💯
 
-- [x] User sees instructions advising them what to do.
-- [x] User can input data to our application, hint, `TextInput`.
-- [x] User can see a placeholder text in the input indicating an expected value to be entered by the user.
-- [x] User can only enter numbers into the input.
-- [x] User can see centered text in the input.
-- [x] User can see two buttons indicating.
+- [x] User sees instructions advising them what to do
+- [x] User can input data to our application, hint, `TextInput`
+- [x] User can see a placeholder text in the input indicating an expected value to be entered by the user
+- [x] User can only enter numbers into the input
+- [x] User can see centered text in the input
+- [x] User can see two buttons indicating
   - VND to USD
   - USD to VND
-- [x] User can see a prompt showing the current value they've entered.
-- [x] User can see a prompt showing the current value's converted value.
+- [x] User can see a prompt showing the current value they've entered
+- [x] User can see a prompt showing the current value's converted value
 - [x] User can see both values formatted correctly for the currencies region.
-- [x] User can switch from VND to USD or USD to VND.
+- [x] User can switch from VND to USD or USD to VND
 
 ### Rockets 🚀
 
