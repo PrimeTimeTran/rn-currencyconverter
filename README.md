@@ -9,11 +9,11 @@ Let's build a new app 📱 using [React Native](https://facebook.github.io/react
 ### Features 🎯🥇🏆
 
 - [ ] User sees instructions advising them what to do.
-- [ ] User can input data to our application via a `TextInput`.
+- [ ] User can input data to our application, hint, `TextInput`.
 - [ ] User can see a placeholder text in the input indicating an expected value to be entered by the user.
 - [ ] User can only enter numbers into the input.
 - [ ] User can see centered text in the input.
-- [ ] User can see two buttons indicating:
+- [ ] User can see two buttons indicating.
   - VND to USD
   - USD to VND
 - [ ] User can see a prompt showing the current value they've entered.
@@ -757,18 +757,18 @@ Everything should be working now. Excellent!
 
 ### Accomplishments 🥇🏆💯
 
-- [x] User sees instructions advising them what to do
-- [x] User can input data to our application, hint, `TextInput`
-- [x] User can see a placeholder text in the input indicating an expected value to be entered by the user
-- [x] User can only enter numbers into the input
-- [x] User can see centered text in the input
-- [x] User can see two buttons indicating
+- [x] User sees instructions advising them what to do.
+- [x] User can input data to our application, hint, `TextInput`.
+- [x] User can see a placeholder text in the input indicating an expected value to be entered by the user.
+- [x] User can only enter numbers into the input.
+- [x] User can see centered text in the input.
+- [x] User can see two buttons indicating.
   - VND to USD
   - USD to VND
-- [x] User can see a prompt showing the current value they've entered
-- [x] User can see a prompt showing the current value's converted value
+- [x] User can see a prompt showing the current value they've entered.
+- [x] User can see a prompt showing the current value's converted value.
 - [x] User can see both values formatted correctly for the currencies region.
-- [x] User can switch from VND to USD or USD to VND
+- [x] User can switch from VND to USD or USD to VND.
 
 ### Rockets 🚀
 
